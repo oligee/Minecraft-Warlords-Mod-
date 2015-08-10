@@ -1,0 +1,7 @@
+{
+    "parent": "block/door_bottom_rh",
+    "textures": {
+        "bottom": "tm:blocks/diamond_warshield_lower",
+        "top": "tm:blocks/diamond_warshield_upper"
+    }
+}

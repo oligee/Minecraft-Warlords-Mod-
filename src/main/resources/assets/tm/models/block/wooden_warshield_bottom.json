@@ -1,0 +1,7 @@
+{
+    "parent": "block/door_bottom",
+    "textures": {
+        "bottom": "tm:blocks/wooden_warshield_lower",
+        "top": "tm:blocks/wooden_warshield_upper"
+    }
+}
