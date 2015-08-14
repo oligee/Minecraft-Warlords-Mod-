@@ -23,6 +23,7 @@ import net.minecraftforge.fml.common.registry.EntityRegistry;
 import net.minecraftforge.fml.common.registry.LanguageRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 
+import com.Testmod.Entitys.Entitys;
 import com.Testmod.ThrownEntitys.EntityThrowDiamondSpear;
 import com.Testmod.ThrownEntitys.EntityThrowIronSpear;
 import com.Testmod.ThrownEntitys.EntityThrowSpear;
@@ -54,21 +55,13 @@ public class Testmod {
 		TestItems.init();
 		TestItems.register();
 		WorldGen.mainRegistry();
+		Entitys.register(this);
 		
 		
-		
-	    int redColor = (255 << 16);
-	    int orangeColor = (255 << 16)+ (200 << 8);
+	 
 
 	    //Register mob
-	    EntityRegistry.registerGlobalEntityID(EntityThrowWoodenSpear.class,"woodenSpear",160, redColor,orangeColor);
-	    EntityRegistry.registerModEntity(EntityThrowWoodenSpear.class, "woodenSpear",160,this,128, 1, true);
-	    EntityRegistry.registerGlobalEntityID(EntityThrowStoneSpear.class,"stoneSpear",161, redColor,orangeColor);
-	    EntityRegistry.registerModEntity(EntityThrowStoneSpear.class, "stoneSpear",161,this,128, 1, true);
-	    EntityRegistry.registerGlobalEntityID(EntityThrowIronSpear.class,"ironSpear",162, redColor,orangeColor);
-	    EntityRegistry.registerModEntity(EntityThrowIronSpear.class, "ironSpear",162,this,128, 1, true);
-	    EntityRegistry.registerGlobalEntityID(EntityThrowDiamondSpear.class,"diamondSpear",163, redColor,orangeColor);
-	    EntityRegistry.registerModEntity(EntityThrowDiamondSpear.class, "diamondSpear",163,this,128, 1, true);
+	    
 	  
 	    
 		   Potion[] potionTypes = null;

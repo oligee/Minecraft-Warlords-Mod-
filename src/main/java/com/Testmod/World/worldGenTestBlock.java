@@ -5,9 +5,14 @@ import java.util.Random;
 import com.Testmod.init.blocks.TestBlocks;
 
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockStairs;
+import net.minecraft.block.BlockStairs.EnumShape;
+import net.minecraft.block.properties.IProperty;
+import net.minecraft.block.properties.PropertyInteger;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.init.Blocks;
 import net.minecraft.util.BlockPos;
+import net.minecraft.util.EnumFacing;
 import net.minecraft.world.World;
 import net.minecraft.world.chunk.IChunkProvider;
 import net.minecraft.world.gen.feature.WorldGenMinable;
@@ -54,10 +59,17 @@ public class worldGenTestBlock implements IWorldGenerator {
 		if(chance == 2){
 			HouseGen.generateBuilding(this,world, random,chunkX,chunkY);
 		}
+		chance = random.nextInt(1200);
+		if(chance == 2){
+			gopro test = new gopro();
+			//test.generateBuilding(this,world, random,chunkX,chunkY);
+			test.generateBuilding(this,world, random,chunkX,chunkY);
+		}
 		chance = random.nextInt(600);
 		if(chance == 2){
-			test3 test = new test3();
-			test.generateBuilding(this,world, random,chunkX,chunkY);
+			//smallDungeonGen test = new smallDungeonGen();
+			smallDungeonGen.generateBuilding(this,world, random,chunkX,chunkY);
+
 		}
 	}
 
@@ -70,10 +82,41 @@ public class worldGenTestBlock implements IWorldGenerator {
 		
 		Block b1 = world.getBlockState(new BlockPos(x, y, z)).getBlock();
 
-		if(b1.isAir(world,(new BlockPos(x, y, z))) || b1.isLeaves(world,(new BlockPos(x, y, z))))
-		{
+		//if(b1.isAir(world,(new BlockPos(x, y, z))) || b1.isLeaves(world,(new BlockPos(x, y, z))))
+		//{
 			//world.setBlock(new BlockPos(x, y, z), block, metadata, 2);
+		if(!(block instanceof BlockStairs)){
 			world.setBlockState(new BlockPos(x, y, z),block.getDefaultState());
+		}else{
+			setStairsState(block, metadata,world,x,y,z);
+		
+			IBlockState gira = block.getDefaultState();
+			world.setBlockState(new BlockPos(x, y, z), gira.withProperty(BlockStairs.FACING, EnumFacing.WEST),2);
+		}
+		//}
+	}
+	private void setStairsState(Block block, int metadata,World world, int x, int y, int z) {
+		IBlockState blockstate = block.getDefaultState();
+		BlockPos pos = new BlockPos(x, y, z);
+		switch (metadata) {
+		case 0:
+			world.setBlockState(pos, blockstate.withProperty(BlockStairs.FACING, EnumFacing.NORTH),2);
+			break;			
+		case 1:
+			world.setBlockState(pos, blockstate.withProperty(BlockStairs.FACING, EnumFacing.WEST),2);
+			break;	
+		case 2:
+			world.setBlockState(pos, blockstate.withProperty(BlockStairs.FACING, EnumFacing.SOUTH),2);
+			break;
+		case 3:
+			world.setBlockState(pos, blockstate.withProperty(BlockStairs.FACING, EnumFacing.EAST),2);
+			break;
+		case 4:
+			world.setBlockState(pos, blockstate.withProperty(BlockStairs.FACING, EnumFacing.NORTH),2);
+			break;
+		default:
+			world.setBlockState(pos, blockstate.withProperty(BlockStairs.FACING, EnumFacing.NORTH),2);
+			break;
 		}
 	}
 
